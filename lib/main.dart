@@ -48,6 +48,20 @@ class MyAppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  /* var image = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Icon(Icons.star, color: Colors.green[500],),
+      Icon(Icons.star, color: Colors.green[300],),
+      Icon(Icons.star, color: Colors.green[100],),
+      Icon(Icons.star, color: Colors.green,)
+    ],
+  );
+
+  void toggleIcon(){
+    image = Row
+  } */
 }
 
 class MyHomePage extends StatefulWidget{
@@ -70,6 +84,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         page = FavoritesPage();
         break;
+      case 2:
+        page = Settings();
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -91,6 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.favorite),
                       label: Text('Favorites'),
                     ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.settings), 
+                      label: Text('Settings'))
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
@@ -215,6 +235,52 @@ class FavoritesPage extends StatelessWidget {
             title: Text(pair.asLowerCase),
           ),
       ],
+    );
+  }
+}
+
+
+class Settings extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context){
+    return Center(
+      child: Column( 
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              SizedBox(height: 25),
+              Padding(padding: const EdgeInsets.all(20)),
+              Text('AJUSTES'),
+              SizedBox(height: 75),
+              
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+              onPressed: (){
+
+              }, 
+              icon: Icon(Icons.settings),
+              label: Text('Ajustes'),
+              ),
+
+              SizedBox(width: 15),
+
+              ElevatedButton.icon(
+                onPressed: (){
+
+                }, 
+                icon: Icon(Icons.app_registration),
+                label: Text('Personalización')
+                ),
+            ],
+          )
+        ], 
+      )
     );
   }
 }
