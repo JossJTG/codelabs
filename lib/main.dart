@@ -262,7 +262,10 @@ class Settings extends StatelessWidget {
             children: [
               ElevatedButton.icon(
               onPressed: (){
-
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+              );
               }, 
               icon: Icon(Icons.settings),
               label: Text('Ajustes'),
